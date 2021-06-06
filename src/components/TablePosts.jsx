@@ -1,7 +1,8 @@
 import { Table} from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useRouteMatch } from 'react-router-dom';
 
 const TablePosts = ({data}) => {
+  let {url} = useRouteMatch();
   console.log('Tablepost: ', data);
     const columns = [
         {
@@ -9,7 +10,7 @@ const TablePosts = ({data}) => {
           dataIndex: 'post',
           key: 'post',
           width: '200px',
-          render: (text, record) => <Link to={`${record.key}`}>{text}</Link>
+          render: (text, record) => <Link to={`${url}post/${record.key}`}>{text}</Link>
         },
         {
           title: 'Content',

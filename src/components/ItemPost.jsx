@@ -1,11 +1,11 @@
 import { Button } from 'antd'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
-const ItemPost = ({data, id}) => {
+const ItemPost = ({data}) => {
+    let { id }  = useParams();
     const item = data &&
     data.length !== 0 &&
     data.find(({key}) => key === id)
-    console.log('Itempost: ', item);
 
     return (
         <>
