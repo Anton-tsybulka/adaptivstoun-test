@@ -5,7 +5,7 @@ const ItemPost = ({data}) => {
     let { id }  = useParams();
     const item = data &&
     data.length !== 0 &&
-    data.find(({key}) => key === id)
+    data.find(({key}) => key === +id)
 
     return (
         <>

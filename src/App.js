@@ -1,4 +1,4 @@
-import React, { useReducer, memo } from 'react'
+import React, { useReducer } from 'react'
 import { Route } from 'react-router-dom'
 import 'antd/dist/antd.css'
 import {
@@ -9,19 +9,21 @@ import {
 } from './components'
 import { Row } from 'antd'
 
+let keyItem = 100
+
 const initialState = [
   {
-    key: '1',
+    key: ++keyItem,
     post: 'John Brown',
     content: 'New York No. 1 Lake Park'
   },
   {
-    key: '2',
+    key: ++keyItem,
     post: 'Jim Green',
     content: 'London No. 1 Lake Park'
   },
   {
-    key: '3',
+    key: ++keyItem,
     post: 'Joe Black',
     content: 'Sidney No. 1 Lake Park'
   },
