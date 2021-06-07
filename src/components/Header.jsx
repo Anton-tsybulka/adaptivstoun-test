@@ -2,7 +2,6 @@ import { Row, Col, Button } from 'antd'
 import { Link } from 'react-router-dom'
 
 const Header = () => {
-    console.log('header');
     return (
         <Row
             justify='space-around'
@@ -13,7 +12,7 @@ const Header = () => {
             <Col>
             <Button type='primary'>
                 <Link to='/create'>
-                Создать пост
+                    Создать пост
                 </Link>
             </Button>
             </Col>

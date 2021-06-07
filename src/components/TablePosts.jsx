@@ -1,9 +1,10 @@
-import { Table} from 'antd';
+import PropTypes from 'prop-types'
+import { Table} from 'antd'
 import { Link, useRouteMatch } from 'react-router-dom';
 
 const TablePosts = ({data}) => {
-  let {url} = useRouteMatch();
-  console.log('Tablepost: ', data);
+  let {url} = useRouteMatch()
+  
     const columns = [
         {
           title: 'Post',
@@ -14,13 +15,17 @@ const TablePosts = ({data}) => {
         },
         {
           title: 'Content',
-          dataIndex: 'content',
-          key: 'content',
+          dataIndex: 'partContent',
+          key: 'partContent',
           width: '800px'
         },
     ]     
       
-    return <Table columns={columns} dataSource={data} />
+  return <Table columns={columns} dataSource={data} />
 }
+
+TablePosts.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default TablePosts

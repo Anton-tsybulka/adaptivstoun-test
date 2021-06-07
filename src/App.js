@@ -14,34 +14,39 @@ let keyItem = 100
 const initialState = [
   {
     key: ++keyItem,
-    post: 'John Brown',
-    content: 'New York No. 1 Lake Park'
+    post: 'Brown',
+    content: 'New York. If your form will invoke reset with default values, you will need to call useForm with defaultValues instead of setting the defaultValue on individual fields.',
+    partContent: 'New York. If your fo...'
   },
-  {
-    key: ++keyItem,
-    post: 'Jim Green',
-    content: 'London No. 1 Lake Park'
-  },
-  {
-    key: ++keyItem,
-    post: 'Joe Black',
-    content: 'Sidney No. 1 Lake Park'
-  },
-];
+]
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'increment':
-      return { count: state.count + 1 };
-    case 'decrement':
-      return { count: state.count - 1 };
+    case 'addPost':
+      let item = action.payload.content.slice(0, 20)
+        .trim()
+        .split(' ')
+      item.push('...')
+
+      return [
+        ...state,
+        {
+          ...action.payload,
+          key: ++keyItem,
+          partContent: item.join(' ')
+        }
+      ]
     default:
-      throw new Error();
+      throw new Error()
   }
 }
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const tablePosts = () => <TablePosts data={state} />
+  const itemPost = () => <ItemPost data={state} />
+  const createPost = () => <CreatePost dispatch={dispatch} />
 
   return (
     <>
@@ -49,15 +54,15 @@ const App = () => {
       <Row justify='center'>
         <Route
           path='/'
-          component={() => <TablePosts data={state} />}
+          component={tablePosts}
           exact />
       </Row>
       <Route
         path='/post/:id'
-        component={() => <ItemPost data={state} />} />
+        component={itemPost} />
       <Route
         path='/create'
-        component={() => <CreatePost />} />
+        component={createPost} />
     </>
   )
 }

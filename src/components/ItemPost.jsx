@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types'
 import { Button } from 'antd'
 import { Link, useParams } from 'react-router-dom'
 
 const ItemPost = ({data}) => {
-    let { id }  = useParams();
+    let { id }  = useParams()
     const item = data &&
-    data.length !== 0 &&
-    data.find(({key}) => key === +id)
+        data.length !== 0 &&
+        data.find(({key}) => key === +id)
 
     return (
         <>
@@ -30,5 +31,9 @@ const ItemPost = ({data}) => {
         </>
     )
 }
+
+ItemPost.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default ItemPost
